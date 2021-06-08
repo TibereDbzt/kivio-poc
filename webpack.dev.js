@@ -119,7 +119,6 @@ let config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './src/assets/medias/favicon.ico',
       filename: 'index.html'
     }),
   ]

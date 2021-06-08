@@ -1,0 +1,31 @@
+.popup
+    position: fixed
+    top: 50%
+    left: 57%
+    max-width: 500px
+    padding: 1rem 2rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    border-radius: 10px
+    border: 1px solid grey
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)
+    opacity: 0
+    
+    .popup__image
+        width: 40px
+        height: 40px
+        border-radius: 50%
+        background: grey
+        margin-right: 1.3rem
+
+    .popup__infos
+        display: grid
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px 20px
+
+        .popup__infos__item
+            width: 70px
+            height: 15px
+            background: grey
+            border-radius: 4px
