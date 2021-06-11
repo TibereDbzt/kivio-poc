@@ -47,11 +47,55 @@ nav
                 color: $black
                 font-size: 0.95rem
 
-            .split__logo
+            .logo-shape
                 position: absolute
-                top: 50%
-                left: 50%
-                transform: translate3d(-50%, -50%, 0)
-                width: 40px
+                width: 10px
                 height: auto
-                display: inline-block
+                pointer-events: none
+                opacity: 0
+
+            .circleTopLeft
+                top: 0
+                left: 0
+                transform: translate3d(-15px, -10px, 0) scale(0)
+
+            .triangleTopRight
+                top: 0
+                right: 0
+                transform: translate3d(15px, -10px, 0) scale(0)
+                
+            .circleBottomLeft
+                bottom: 0
+                left: 0
+                transform: translate3d(-15px, 10px, 0) scale(0)
+
+            .triangleBottomRight
+                bottom: 0
+                right: 0
+                transform: translate3d(15px, 10px, 0) scale(0)
+
+.pageTransitionOverlay
+    z-index: 100
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+    pointer-events: none
+
+    .shapesContainer
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+
+        .transparent-logo
+            transform: scale(20) translate3d(50px, 42px, 0)
+        
+        > .logo-shape
+            position: absolute
+            transform: scale(0)
+            opacity: 0
