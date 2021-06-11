@@ -1,0 +1,57 @@
+@import './settings/fonts'
+@import './settings/variables'
+
+main
+    width: 100%
+    min-height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+.loader__logo
+    width: 120px
+
+a
+    color: unset
+    text-decoration: none
+
+*
+    box-sizing: border-box
+
+nav
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 1rem 2.5rem
+
+    .logo__container
+        width: 100px
+    
+    .menu
+        display: flex
+        list-style: none
+
+        .menu__link
+            position: relative
+            padding: 4px 8px
+            margin: 0 1.1rem
+
+            &:last-of-type
+                margin-right: 0
+
+            .menu__entry
+                color: $black
+                font-size: 0.95rem
+
+            .split__logo
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate3d(-50%, -50%, 0)
+                width: 40px
+                height: auto
+                display: inline-block

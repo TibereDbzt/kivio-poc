@@ -1,3 +1,3 @@
 import './animateSVG';
-import './popus';
+import './popup';
 import './../styles/main.sass';
