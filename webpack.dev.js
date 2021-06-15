@@ -7,7 +7,7 @@ const PATHS = {
     dist: path.join(__dirname, '/dist'),
 };
 
-const viewNames = ['anim'];
+const viewNames = ['anim', 'globe'];
 const htmlPlugins = viewNames.map(viewName => {
     return new HtmlWebpackPlugin({
         template: `./src/${viewName}.html`,
@@ -22,7 +22,8 @@ let config = {
 
     entry: {
         main: './src/scripts/main.js',
-        anim: './src/scripts/anim.js'
+        anim: './src/scripts/anim.js',
+        globe: './src/scripts/globe.js'
     },
 
     output: {

@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const PATHS = {
     root: path.join(__dirname, '/'),
     src: path.join(__dirname, '/src'),
-    dist: path.join(__dirname, '/dist'),
+    dist: path.join(__dirname, '/map'),
 };
 
 let config = {
@@ -16,17 +16,16 @@ let config = {
     entry: './src/scripts/main.js',
 
     output: {
-      path: PATHS.dist,
-      filename: 'scripts/main.js',
+        path: PATHS.dist,
+        filename: 'scripts/map.js',
     },
 
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.html$/,
                 loader: 'html-loader',
                 options: {
-                  attrs: [":src"]
+                    attrs: [":src"]
                 }
             },
             {
@@ -38,8 +37,8 @@ let config = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader']
-              },
+                use: ['style-loader', 'css-loader']
+            },
             {
                 test: /\.sass$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', {
@@ -53,85 +52,81 @@ let config = {
                     }
                 }, 'sass-loader']
             },
-      // {
-      //   test: /\.(jpe?g|png|gif|svg)$/,
-      //   loader: 'url-loader',
-      //   options: {
-      //     limit: 8000,
-      //     name: 'assets/medias/[hash]-[name].[ext]',
-      //     esModule: false
-      //   }
-      // },
-      {
-        test: /\.(gif|png|jpe?g|svg|ico)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'assets/medias/[name].[hash:6].[ext]',
-              emitFile: true,
-              enforce: 'pre',
-              esModule: false,
-            }
-          },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-              },
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              webp: {
-                quality: 75
-              },
+            // {
+            //   test: /\.(jpe?g|png|gif|svg)$/,
+            //   loader: 'url-loader',
+            //   options: {
+            //     limit: 8000,
+            //     name: 'assets/images/[hash]-[name].[ext]',
+            //     esModule: false
+            //   }
+            // },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/images/[name].[hash:6].[ext]',
+                            emitFile: true,
+                            enforce: 'pre',
+                            esModule: false,
+                        }
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                            },
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            webp: {
+                                quality: 75
+                            },
+                        },
+                    },
+                ],
             },
-          },
-        ],
-      },
-      {
-        test: /\.(mov|mp4)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'assets/medias/',
-          esModule: false,
-        }
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|otf)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/fonts/',
-              esModule: false,
+            {
+                test: /\.(mov|mp4)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'assets/videos/',
+                    esModule: false,
+                }
             },
-          }
-        ]
-      },
+            {
+                test: /\.(woff(2)?|ttf|eot|otf)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'assets/fonts/',
+                        esModule: false,
+                    },
+                }]
+            },
         ]
     },
 
     plugins: [
-      new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html',
-        favicon: './src/assets/medias/favicon.ico',
-      }),
-      new CleanWebpackPlugin(),
-      new MiniCssExtractPlugin({
-        filename: `main.css`
-      })
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'index.html'
+        }),
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: `main.css`
+        })
     ]
 };
 
