@@ -8,8 +8,8 @@ const coordinatesToPosition = (lat, long, radius) => {
 
     return new THREE.Vector3(-radius * Math.sin(phi) * Math.cos(theta),
         radius * Math.cos(phi),
-        radius * Math.sin(phi) * Math.theta
-    );
+        radius * Math.sin(phi) * Math.sin(theta)
+    ).normalize().multiplyScalar(radius);
 };
 
 const setArc3D = (pointCenter, pointStart, pointEnd, nbOfVertices, clockWise, color) => {
@@ -36,6 +36,25 @@ const setArc3D = (pointCenter, pointStart, pointEnd, nbOfVertices, clockWise, co
     }));
 
     return arc3D;
+};
+
+const setCurve3D = (pointStart, pointEnd, color) => {
+    console.log(pointStart);
+    console.log(pointEnd);
+    const pointMid = pointStart.clone().add(pointEnd).divideScalar(2);
+    console.log(pointMid);
+    const curve = new THREE.CubicBezierCurve3(
+        pointStart,
+        pointMid,
+        pointEnd
+    );
+    const points = curve.getPoints(50);
+    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+    const curveObject = new THREE.Line(geometry, new THREE.LineBasicMaterial({
+        color: color
+    }));
+
+    return curveObject;
 }
 
-export { DEGREE_TO_RADIAN, coordinatesToPosition, setArc3D };
+export { DEGREE_TO_RADIAN, coordinatesToPosition, setArc3D, setCurve3D };
