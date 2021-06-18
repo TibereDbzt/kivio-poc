@@ -36,7 +36,7 @@ export default class LoaderAnimation {
         this.timeline.to(this.shapes.circleTopLeft, { yPercent: 100, translateX: 6, translateY: 11, duration: 0.4, ease: 'power4.out' });
         this.timeline.set(this.shapes.triangleTopRight, { transformOrigin: 'top right' });
         this.timeline.to(this.shapes.triangleTopRight, { rotation: -90, duration: 0.4, ease: 'power4.out' });
-        this.timeline.to(this.svg, { rotate: 90, duration: 0.4, xPercent: 2, ease: 'power4.out' });
+        this.timeline.to(this.svg, { rotate: 90, duration: 1, xPercent: 2, ease: 'elastic.out' });
         this.timeline.play();
     }
 

@@ -4,6 +4,7 @@ export default class MenuAnimation {
 
     constructor(container) {
         this.menu = container;
+        this.logo = document.querySelector('[data-logo-nav]');
         this.entries = container.querySelectorAll('[data-menu-entry]');
         this.entries = [...this.entries].map(entry => {
             return {
@@ -17,6 +18,8 @@ export default class MenuAnimation {
                 }
             }
         });
+        this.lastScrollWentDown = false;
+        this.scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         this.initEvents();
     }
 
@@ -28,6 +31,14 @@ export default class MenuAnimation {
             entry.target.addEventListener('mouseleave', () => {
                 this.animateOutEntry(entry);
             });
+        });
+        document.addEventListener('scroll', e => {
+            const scrollTop = document.documentElement.scrollTop;
+            const isScrollingDown = scrollTop > this.scrollTop;
+            this.scrollTop = scrollTop;
+            if ((isScrollingDown && this.lastScrollWentDown) || (!isScrollingDown && !this.lastScrollWentDown)) return;
+            this.lastScrollWentDown = isScrollingDown;
+            this.toggleHideKivioName();
         });
     }
 
@@ -44,6 +55,11 @@ export default class MenuAnimation {
         this.tweens.forEach(tween => {
             tween.reverse();
         });
+    }
+
+    toggleHideKivioName() {
+        if (this.lastScrollWentDown) gsap.to(this.logo.querySelector('[data-logo-text]'), { x: -200, opacity: 0, skewX: 15, duration: 0.4, ease: 'power4.out' });
+        else gsap.to(this.logo.querySelector('[data-logo-text]'), { x: 0, opacity: 1, duration: 0.4, skewX: 0, ease: 'power4.out' });
     }
 
 }

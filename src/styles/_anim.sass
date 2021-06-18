@@ -1,5 +1,7 @@
+@import './settings/reset'
 @import './settings/fonts'
 @import './settings/variables'
+@import './nav'
 
 main
     width: 100%
@@ -10,69 +12,6 @@ main
 
 .loader__logo
     width: 120px
-
-a
-    color: unset
-    text-decoration: none
-
-*
-    box-sizing: border-box
-
-nav
-    position: fixed
-    top: 0
-    left: 0
-    width: 100%
-    display: flex
-    justify-content: space-between
-    align-items: center
-    padding: 1rem 2.5rem
-
-    .logo__container
-        width: 100px
-    
-    .menu
-        display: flex
-        list-style: none
-
-        .menu__link
-            position: relative
-            padding: 4px 8px
-            margin: 0 1.1rem
-
-            &:last-of-type
-                margin-right: 0
-
-            .menu__entry
-                color: $black
-                font-size: 0.95rem
-
-            .logo-shape
-                position: absolute
-                width: 10px
-                height: auto
-                pointer-events: none
-                opacity: 0
-
-            .circleTopLeft
-                top: 0
-                left: 0
-                transform: translate3d(-15px, -10px, 0) scale(0)
-
-            .triangleTopRight
-                top: 0
-                right: 0
-                transform: translate3d(15px, -10px, 0) scale(0)
-                
-            .circleBottomLeft
-                bottom: 0
-                left: 0
-                transform: translate3d(-15px, 10px, 0) scale(0)
-
-            .triangleBottomRight
-                bottom: 0
-                right: 0
-                transform: translate3d(15px, 10px, 0) scale(0)
 
 .pageTransitionOverlay
     z-index: 100

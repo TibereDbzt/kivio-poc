@@ -10,14 +10,18 @@ const DOM = {
             length: getPathLength(document.querySelector('.path'))
         },
         cities: [{
-                el: document.querySelector('.city-point1'),
-                length: getCircleLength(document.querySelector('.city-point1')),
+                circle: document.querySelector('.city-point1'),
+                circleLength: getCircleLength(document.querySelector('.city-point1')),
+                name: document.querySelector('.city-name1'),
+                nameLength: getPathLength(document.querySelector('.city-name1')),
                 reachedAt: 287,
                 isReached: false
             },
             {
-                el: document.querySelector('.city-point2'),
-                length: getCircleLength(document.querySelector('.city-point2')),
+                circle: document.querySelector('.city-point2'),
+                name: document.querySelector('.city-name2'),
+                circleLength: getCircleLength(document.querySelector('.city-point2')),
+                nameLength: getPathLength(document.querySelector('.city-name2')),
                 reachedAt: 100,
                 isReached: false
             }
@@ -29,8 +33,10 @@ const setShapesAttributes = () => {
     DOM.shapes.path.el.style.strokeDasharray = DOM.shapes.path.length + ' ' + DOM.shapes.path.length;
     DOM.shapes.path.el.style.strokeDashoffset = DOM.shapes.path.length;
     DOM.shapes.cities.forEach(city => {
-        city.el.style.strokeDasharray = city.length + ' ' + city.length;
-        city.el.style.strokeDashoffset = city.length;
+        city.circle.style.strokeDasharray = city.circleLength + ' ' + city.circleLength;
+        city.circle.style.strokeDashoffset = city.circleLength;
+        city.name.style.strokeDasharray = city.nameLength + ' ' + city.nameLength;
+        city.name.style.strokeDashoffset = city.nameLength;
     });
 };
 
@@ -44,10 +50,12 @@ const animatePath = () => {
 const animateReachedCities = (progress) => {
     DOM.shapes.cities.forEach(city => {
         if (!city.isReached && progress >= city.reachedAt) {
-            gsap.to(city.el, { duration: 1, strokeDashoffset: 0, ease: "power4.out" });
+            gsap.to(city.circle, { duration: 1, strokeDashoffset: 0, ease: "power4.out" });
+            gsap.to(city.name, { duration: 1, strokeDashoffset: 0, ease: "power4.out" });
             city.isReached = true;
         } else if (city.isReached && progress < city.reachedAt) {
-            gsap.to(city.el, { duration: 1, strokeDashoffset: city.length, ease: "power4.out" });
+            gsap.to(city.circle, { duration: 1, strokeDashoffset: city.circleLength, ease: "power4.out" });
+            gsap.to(city.name, { duration: 1, strokeDashoffset: city.nameLength, ease: "power4.out" });
             city.isReached = false;
         }
     });

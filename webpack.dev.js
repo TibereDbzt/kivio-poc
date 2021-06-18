@@ -36,7 +36,12 @@ let config = {
                 test: /\.html$/,
                 loader: 'html-loader',
                 options: {
-                    attrs: [":src"]
+                    sources: {
+                        list: [{
+                            attribute: 'src',
+                            type: 'src'
+                        }]
+                    }
                 }
             },
             {

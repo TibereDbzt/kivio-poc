@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { DEGREE_TO_RADIAN, coordinatesToPosition, setArc3D, setCurve3D } from './3d-utils';
-import texture from './../assets/medias/earth.jpg';
+// import texture from './../assets/medias/earth.jpg';
 
 const GLOBE_RADIUS = 20;
 const CURVE_SEGMENTS = 32;
@@ -10,8 +10,8 @@ const CURVE_SEGMENTS = 32;
 const globe = new THREE.Mesh(
     new THREE.SphereGeometry(GLOBE_RADIUS - 19.5, 32, 32),
     new THREE.MeshBasicMaterial({
-        // color: 0xff0000
-        map: new THREE.TextureLoader().load(texture)
+        color: 0xff0000
+            // map: new THREE.TextureLoader().load(texture)
     })
 );
 
