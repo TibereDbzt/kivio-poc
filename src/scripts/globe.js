@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { DEGREE_TO_RADIAN, coordinatesToPosition, setArc3D, setCurve3D } from './3d-utils';
+import { createPathOnSphere } from './3d-utils';
 import texture from './../assets/medias/earth.jpg';
 
 const GLOBE_RADIUS = 20;
@@ -13,32 +13,38 @@ const CURVE_SEGMENTS = 32;
 // meshe of the globe
 const globe = new THREE.Mesh(
     new THREE.SphereGeometry(GLOBE_RADIUS, 32, 32),
-    new THREE.MeshBasicMaterial({
-        // color: 0xff0000
-        map: new THREE.TextureLoader().load(texture)
+    new THREE.MeshPhongMaterial({
+        color: 'darkgreen',
+        opacity: 0.5,
+        transparent: true
     })
 );
 
-// meshe of a simple spline curve
-// const curve = new THREE.CatmullRomCurve3([
-//     new THREE.Vector3(-10, 0, 10),
-//     new THREE.Vector3(-5, 5, 5),
-//     new THREE.Vector3(0, 0, 0),
-//     new THREE.Vector3(5, -5, 5),
-//     new THREE.Vector3(10, 0, 10)
-// ]);
-// const points = curve.getPoints(100);
-// const geometry = new THREE.BufferGeometry().setFromPoints(points);
-// const material = new THREE.LineBasicMaterial({ color: 0xfff000 });
-// const splineObject = new THREE.Line(geometry, material);
-
-// meshe of a vehicle path
-const pointCenter = new THREE.Vector3();
-const pointStart = coordinatesToPosition(0, 0, GLOBE_RADIUS + 1);
-const pointEnd = coordinatesToPosition(30, 180, GLOBE_RADIUS + 1);
-const arc3D = setArc3D(pointCenter, pointStart, pointEnd, 20, false, "lime");
-// doesn't work as expected
-// const curve3D = setCurve3D(pointStart, pointEnd, "lime");
+// Vehicle Path #01
+const paths = [
+    createPathOnSphere([
+        [0, 0],
+        [10, 10],
+        [0, 15],
+        [-10, 20],
+        [-20, 25],
+        [-28, 34]
+    ], GLOBE_RADIUS, 0.1, 0xff0000),
+    createPathOnSphere([
+        [-75, 20],
+        [-63, 7],
+        [-51, -10],
+        [-68, -14],
+    ], GLOBE_RADIUS, 0.1, 0xff0000),
+    // createPathOnSphere([
+    //     [0, 0],
+    //     [10, 10],
+    //     [0, 15],
+    //     [-10, 20],
+    //     [-20, 25],
+    //     [-28, 34]
+    // ], GLOBE_RADIUS, 0.1, 0xff0000)
+];
 
 
 // ----------------
@@ -53,10 +59,10 @@ document.body.appendChild(renderer.domElement);
 // ----------------
 // SCENE CREATTION
 // ----------------
-const scene = new THREE.Scene();
+const scene = new THREE.Scene()
+scene.background = new THREE.Color(0xffffff);
 scene.add(globe);
-// scene.add(splineObject);
-scene.add(arc3D);
+paths.forEach(path => scene.add(path));
 
 
 // ---------------------------

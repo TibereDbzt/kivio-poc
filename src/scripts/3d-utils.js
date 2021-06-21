@@ -57,4 +57,13 @@ const setCurve3D = (pointStart, pointEnd, color) => {
     return curveObject;
 }
 
-export { DEGREE_TO_RADIAN, coordinatesToPosition, setArc3D, setCurve3D };
+const createPathOnSphere = (points, sphereRadius, offset, color) => {
+    const vectors = points.map(point => coordinatesToPosition(point[0], point[1], sphereRadius + offset));
+    const curve = new THREE.CatmullRomCurve3(vectors);
+    const nbOfPoints = curve.getPoints(100);
+    const geometry = new THREE.BufferGeometry().setFromPoints(nbOfPoints);
+    const material = new THREE.LineBasicMaterial({ color: color, linewidth: 4 });
+    return new THREE.Line(geometry, material);
+}
+
+export { DEGREE_TO_RADIAN, createPathOnSphere, coordinatesToPosition, setArc3D, setCurve3D };

@@ -9,7 +9,13 @@ let isOpen = false;
 const tween = gsap.to(DOM.popup, { duration: 0.4, ease: "power4.out", opacity: 1, y: -50 }).pause();
 
 const togglePopup = () => {
-    isOpen ? tween.reverse() : tween.play();
+    if (isOpen) {
+        tween.reverse();
+        DOM.popup.style.pointerEvents = 'none';
+    } else {
+        tween.play();
+        DOM.popup.style.pointerEvents = 'all';
+    }
     isOpen = !isOpen;
 };
 
