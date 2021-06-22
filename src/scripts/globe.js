@@ -69,7 +69,8 @@ const scene = new THREE.Scene()
 scene.background = new THREE.Color(0xffffff);
 scene.add(globe);
 paths.forEach(path => scene.add(path));
-scene.add(zigzag);
+console.log(zigzag.precourbe);
+scene.add(zigzag.object);
 
 
 // ---------------------------
