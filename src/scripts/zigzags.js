@@ -12,33 +12,34 @@ export default class Zigzags {
             if (k = 0) {
                 return []
             }
-            m = (a + b) / 2
-            o = b - a
+            const m = a.add(b).divideScalar(2);
+            const o = b.sub(a)
             o.set(-o.y, o.x)
-            p = m + 2 * w * (Math.random() - 0.5) * o
-            t = aux(a, p, k - 1)
+                // p = m + 2 * w * (Math.random() - 0.5) * o
+            const p = m.addScalar(2).multiplyScalar(w * Math.random() - 0.5).multiply(o);
+            const t = aux(a, p, k - 1)
             t.push(p)
             return t.concat(aux(p, b, k - 1))
         }
 
         const e1 = v2.sub(v1);
         const e2 = new THREE.Vector3();
-        e2.crossVectors(a, b);
+        e2.crossVectors(v1, v2);
         e2.normalize()
         e2.multiplyScalar(e1.length())
 
         const f = v => {
-            p = v.x * e1 + v.y * e2 + v1
+            // p = v.x * e1 + v.y * e2 + v1
+            const p = e1.multiplyScalar(v.x).add(e2.multiplyScalar(v.y)).add(v1);
             p.normalize()
             p.multiplyScalar(this.radius())
             return p
         }
 
-        l = aux(THREE.vector2(0, 0), THREE.vector2(1, 0), n).map(f)
+        const l = aux(new THREE.Vector2(0, 0), new THREE.Vector2(1, 0), n).map(f)
 
         this.precourbe = new THREE.CatmullRomCurve3(l) // ptetre changer curveType et tension pour voir
     }
-
 
     getPoint(t, optionalTarget = new Vector3()) {
         this.precourbe.getPoint(t, optionalTarget)

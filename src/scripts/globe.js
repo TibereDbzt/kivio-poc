@@ -48,7 +48,6 @@ const paths = [
 ];
 
 // Test Lilian
-
 const v1 = coordinatesToPosition(-30, -20, GLOBE_RADIUS + 0.1);
 const v2 = coordinatesToPosition(-43, -31, GLOBE_RADIUS + 0.1);
 const zigzag = new Zigzags(v1, v2);

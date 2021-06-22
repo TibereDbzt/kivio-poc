@@ -62,7 +62,7 @@ const createPathOnSphere = (points, sphereRadius, offset, color) => {
     const curve = new THREE.CatmullRomCurve3(vectors);
     const nbOfPoints = curve.getPoints(100);
     const geometry = new THREE.BufferGeometry().setFromPoints(nbOfPoints);
-    const material = new THREE.LineBasicMaterial({ color: color, linewidth: 4 });
+    const material = new THREE.LineBasicMaterial({ color: color, linewidth: 10 });
     return new THREE.Line(geometry, material);
 }
 
