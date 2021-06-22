@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { createPathOnSphere } from './3d-utils';
+import { coordinatesToPosition, createPathOnSphere } from './3d-utils';
+import Zigzags from './zigzags';
 import texture from './../assets/medias/earth.jpg';
 
 const GLOBE_RADIUS = 20;
@@ -46,6 +47,12 @@ const paths = [
     // ], GLOBE_RADIUS, 0.1, 0xff0000)
 ];
 
+// Test Lilian
+
+const v1 = coordinatesToPosition(-30, -20, GLOBE_RADIUS + 0.1);
+const v2 = coordinatesToPosition(-43, -31, GLOBE_RADIUS + 0.1);
+const zigzag = new Zigzags(v1, v2);
+
 
 // ----------------
 // RENDER SETTINGS
@@ -63,6 +70,7 @@ const scene = new THREE.Scene()
 scene.background = new THREE.Color(0xffffff);
 scene.add(globe);
 paths.forEach(path => scene.add(path));
+scene.add(zigzag);
 
 
 // ---------------------------
