@@ -4,7 +4,7 @@
     "description": "pure frontend project starter configured with webpack, sass, babel, postcss, eslint, minification and images size optimisation",
     "main": "index.js",
     "scripts": {
-        "dev": "webpack serve --open --config webpack.dev.js",
+        "dev": "webpack serve --port 81 --open --config webpack.dev.js",
         "prod": "webpack --config webpack.prod.js"
     },
     "author": "tibere",

@@ -17,13 +17,13 @@ export default class Zigzags {
             const o = b.clone().sub(a)
             o.set(-o.y, o.x)
                 // p = m + 2 * w * (Math.random() - 0.5) * o
-            const p = m.addScalar(2).multiplyScalar(w * Math.random() - 0.5).multiply(o);
+            const p = m.add(o.multiplyScalar(2 * w * (Math.random() - 0.5)));
             const t = aux(a, p, k - 1)
             t.push(p)
             return t.concat(aux(p, b, k - 1))
         }
 
-        const e1 = v2.sub(v1);
+        const e1 = v2.clone().sub(v1);
         const e2 = new THREE.Vector3();
         e2.crossVectors(v1, v2);
         e2.normalize()
@@ -31,17 +31,19 @@ export default class Zigzags {
 
         const f = v => {
             // p = v.x * e1 + v.y * e2 + v1
-            const p = e1.multiplyScalar(v.x).add(e2.multiplyScalar(v.y)).add(v1);
+            const p = e1.clone().multiplyScalar(v.x).add(e2.clone().multiplyScalar(v.y)).add(v1);
             p.normalize()
             p.multiplyScalar(this.radius);
             return p
         }
 
         const l = aux(new THREE.Vector2(0, 0), new THREE.Vector2(1, 0), n).map(f)
+        l.unshift(v1)
+        l.push(v2)
 
         this.precourbe = new THREE.CatmullRomCurve3(l) // ptetre changer curveType et tension pour voir
         this.material = new THREE.LineBasicMaterial({ color: 0xff0000 });
-        this.geometry = new THREE.BufferGeometry().setFromPoints(this.precourbe.getPoints(200));
+        this.geometry = new THREE.BufferGeometry().setFromPoints(this.precourbe.getPoints(200)); //les points de precourbe sont pas sur la sphere
         this.object = new THREE.Line(this.geometry, this.material);
     }
 

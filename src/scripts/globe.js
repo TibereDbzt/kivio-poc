@@ -13,44 +13,25 @@ const CURVE_SEGMENTS = 32;
 
 // meshe of the globe
 const globe = new THREE.Mesh(
-    new THREE.SphereGeometry(GLOBE_RADIUS, 32, 32),
+    new THREE.SphereGeometry(GLOBE_RADIUS, 50, 50),
     new THREE.MeshPhongMaterial({
         color: 'darkgreen',
-        opacity: 0.5,
-        transparent: true
+        opacity: 0.2,
+        transparent: false
     })
 );
 
 // Vehicle Path #01
 const paths = [
-    createPathOnSphere([
-        [0, 0],
-        [10, 10],
-        [0, 15],
-        [-10, 20],
-        [-20, 25],
-        [-28, 34]
-    ], GLOBE_RADIUS, 0.1, 0xff0000),
-    createPathOnSphere([
-        [-75, 20],
-        [-63, 7],
-        [-51, -10],
-        [-68, -14],
-    ], GLOBE_RADIUS, 0.1, 0xff0000),
-    // createPathOnSphere([
-    //     [0, 0],
-    //     [10, 10],
-    //     [0, 15],
-    //     [-10, 20],
-    //     [-20, 25],
-    //     [-28, 34]
-    // ], GLOBE_RADIUS, 0.1, 0xff0000)
+    new Zigzags(
+        coordinatesToPosition(-30, -20, GLOBE_RADIUS + 0.1),
+        coordinatesToPosition(50, 45, GLOBE_RADIUS + 0.1),
+    ),
+    new Zigzags(
+        coordinatesToPosition(-90, -90, GLOBE_RADIUS + 0.1),
+        coordinatesToPosition(180, 90, GLOBE_RADIUS + 0.1),
+    )
 ];
-
-// Test Lilian
-const v1 = coordinatesToPosition(-30, -20, GLOBE_RADIUS + 0.1);
-const v2 = coordinatesToPosition(-43, -31, GLOBE_RADIUS + 0.1);
-const zigzag = new Zigzags(v1, v2);
 
 
 // ----------------
@@ -68,9 +49,7 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0xffffff);
 scene.add(globe);
-paths.forEach(path => scene.add(path));
-console.log(zigzag.precourbe);
-scene.add(zigzag.object);
+paths.forEach(path => scene.add(path.object));
 
 
 // ---------------------------
