@@ -13,15 +13,15 @@ const coordinatesToPosition = (lat, long, radius) => {
 };
 
 const setArc3D = (pointCenter, pointStart, pointEnd, nbOfVertices, clockWise, color) => {
-    const v1 = new THREE.Vector3(),
-        v2 = new THREE.Vector3(),
-        normal = new THREE.Vector3();
+    const v1 = new THREE.Vector3();
+    const v2 = new THREE.Vector3();
+    const normal = new THREE.Vector3();
     v1.subVectors(pointCenter, pointEnd);
     v2.subVectors(pointStart, pointEnd);
     v1.cross(v2);
     normal.copy(v1).normalize();
 
-    const angle = pointStart.angleTo(pointEnd);
+    let angle = pointStart.angleTo(pointEnd);
     if (clockWise) angle -= Math.PI * 2;
     const angleDelta = angle / (nbOfVertices - 1);
 
@@ -55,7 +55,7 @@ const setCurve3D = (pointStart, pointEnd, color) => {
     }));
 
     return curveObject;
-}
+};
 
 const createPathOnSphere = (points, sphereRadius, offset, color) => {
     const vectors = points.map(point => coordinatesToPosition(point[0], point[1], sphereRadius + offset));
@@ -64,6 +64,6 @@ const createPathOnSphere = (points, sphereRadius, offset, color) => {
     const geometry = new THREE.BufferGeometry().setFromPoints(nbOfPoints);
     const material = new THREE.LineBasicMaterial({ color: color, linewidth: 10 });
     return new THREE.Line(geometry, material);
-}
+};
 
 export { DEGREE_TO_RADIAN, createPathOnSphere, coordinatesToPosition, setArc3D, setCurve3D };

@@ -1,6 +1,5 @@
 import gsap from 'gsap';
-import gsapCore from 'gsap/gsap-core';
-import { getCircleLength, getPathLength } from './calculateSVGLength';
+import { getCircleLength, getPathLength } from '../utils/svg-maths';
 
 const DOM = {
     container: document.querySelector('.svg-container'),

@@ -1,7 +1,7 @@
-import './../styles/_anim.sass';
 import gsap from 'gsap';
+import './../../styles/modules/loader.sass';
 
-export default class LoaderAnimation {
+export default class LogoAnimation {
 
     constructor(container) {
         this.container = container;
@@ -38,6 +38,10 @@ export default class LoaderAnimation {
         this.timeline.to(this.shapes.triangleTopRight, { rotation: -90, duration: 0.4, ease: 'power4.out' });
         this.timeline.to(this.svg, { rotate: 90, duration: 1, xPercent: 2, ease: 'elastic.out' });
         this.timeline.play();
+    }
+
+    remove() {
+        gsap.to(this.container, { opacity: 0, display: 'none', duration: 1.9, ease: 'power2.inOut' });
     }
 
 }

@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import './../../styles/modules/popup.sass';
 
 const DOM = {
     route: document.querySelector('.route'),

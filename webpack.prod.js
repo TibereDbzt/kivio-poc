@@ -9,15 +9,27 @@ const PATHS = {
     dist: path.join(__dirname, '/map'),
 };
 
+const viewNames = ['globe'];
+const htmlPlugins = viewNames.map(viewName => {
+    return new HtmlWebpackPlugin({
+        template: `./src/${viewName}.html`,
+        filename: `${viewName}.html`,
+        chunks: [`${viewName}`]
+    })
+});
+
 let config = {
 
     mode: 'production',
 
-    entry: './src/scripts/main.js',
+    entry: {
+        index: './src/scripts/index.js',
+        globe: './src/scripts/globe.js'
+    },
 
     output: {
         path: PATHS.dist,
-        filename: 'scripts/map.js',
+        filename: 'scripts/[name].js',
     },
 
     module: {
@@ -121,13 +133,14 @@ let config = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: 'index.html'
+            filename: 'index.html',
+            chunks: ['index']
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: `main.css`
         })
-    ]
+    ].concat(htmlPlugins)
 };
 
 module.exports = config

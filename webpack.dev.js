@@ -7,22 +7,21 @@ const PATHS = {
     dist: path.join(__dirname, '/dist'),
 };
 
-const viewNames = ['anim', 'globe'];
+const viewNames = ['globe'];
 const htmlPlugins = viewNames.map(viewName => {
     return new HtmlWebpackPlugin({
         template: `./src/${viewName}.html`,
         filename: `${viewName}.html`,
         chunks: [`${viewName}`]
     })
-})
+});
 
 let config = {
 
     mode: 'development',
 
     entry: {
-        main: './src/scripts/main.js',
-        anim: './src/scripts/anim.js',
+        index: './src/scripts/index.js',
         globe: './src/scripts/globe.js'
     },
 
@@ -134,7 +133,7 @@ let config = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
-            chunks: ['main']
+            chunks: ['index']
         })
     ].concat(htmlPlugins)
 };

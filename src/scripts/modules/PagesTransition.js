@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import './../../styles/modules/pages-transition.sass';
 
 class CanvasShapesTransition {
 

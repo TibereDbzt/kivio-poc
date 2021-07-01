@@ -35,6 +35,24 @@
 </head>
 
 <body>
+
+    <div class="loader">
+        <svg class="loader__logo" width="362" height="342" viewBox="0 0 362 342" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="circleTopLeft" d="M133.3 86C109.938 86 90.9996 105.028 90.9996 128.5C90.9996 151.972 109.938 171 133.3 171C156.661 171 175.6 151.972 175.6 128.5C175.6 105.028 156.661 86 133.3 86Z" fill="#F07A41"/>
+            <path class="triangleTopRight" d="M184.6 95.0426C184.6 90.0485 188.629 86 193.6 86H263.145C267.483 86 271 89.5332 271 93.8917C271 137.476 235.834 172.809 192.454 172.809H184.6V95.0426Z" fill="#5458FB"/>
+            <path class="circleBottomLeft" d="M133.3 171C109.938 171 90.9996 190.028 90.9996 213.5C90.9996 236.972 109.938 256 133.3 256C156.661 256 175.6 236.972 175.6 213.5C175.6 190.028 156.661 171 133.3 171Z" fill="#FFA67A"/>
+            <path class="triangleBottomRight" d="M193.6 256C188.629 256 184.6 251.951 184.6 246.957V172.809H192.886C236.027 172.809 271 207.946 271 251.291C271 253.892 268.901 256 266.313 256H193.6Z" fill="#57D180"/>
+        </svg>
+    </div>
+
+    <div class="pageTransitionOverlay" data-transition-overlay>
+        <div class="shapesContainer">
+            <svg data-transition-svg class="transparent-logo" width="1766" height="1668" viewBox="0 0 1766 1668" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path data-transition-shape fill-rule="evenodd" clip-rule="evenodd" d="M0 0H1766V1668H0V0ZM835.3 834C811.938 834 793 853.028 793 876.5C793 899.972 811.938 919 835.3 919C858.661 919 877.6 899.972 877.6 876.5C877.6 853.028 858.661 834 835.3 834ZM835.3 834C858.661 834 877.6 814.972 877.6 791.5C877.6 768.028 858.661 749 835.3 749C811.938 749 793 768.028 793 791.5C793 814.972 811.938 834 835.3 834ZM886.6 758.043C886.6 753.049 890.629 749 895.6 749H965.145C969.483 749 973 752.533 973 756.892C973 800.476 937.834 835.809 894.454 835.809H894.886C938.027 835.809 973 870.946 973 914.291C973 916.892 970.901 919 968.313 919H895.6C890.629 919 886.6 914.951 886.6 909.957V835.809V758.043Z" fill="#57D180"/>
+            </svg>
+        </div>
+    </div>
+
     <nav>
         <a class="logo__container" href="#">
             <svg data-logo-nav viewBox="0 0 445 94" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +66,7 @@
         </a>
         <ul class="menu" data-menu>
             <a href="#" class="menu__link internLink" data-menu-entry>
-                <li class="menu__entry" data-menu-entry-text>About Us</li>
+                <li class="menu__entry" data-menu-entry-text>À propos</li>
                 <svg class="logo-shape circleTopLeft" width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M23.5 47C36.4787 47 47 36.4787 47 23.5C47 10.5213 36.4787 0 23.5 0C10.5213 0 0 10.5213 0 23.5C0 36.4787 10.5213 47 23.5 47Z" fill="#F07A41"/>
                 </svg>
@@ -63,7 +81,7 @@
                 </svg>
             </a>
             <a href="#" class="menu__link internLink" data-menu-entry>
-                <li class="menu__entry" data-menu-entry-text>Features</li>
+                <li class="menu__entry" data-menu-entry-text>Fonctionnalités</li>
                 <svg class="logo-shape circleTopLeft" width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M23.5 47C36.4787 47 47 36.4787 47 23.5C47 10.5213 36.4787 0 23.5 0C10.5213 0 0 10.5213 0 23.5C0 36.4787 10.5213 47 23.5 47Z" fill="#F07A41"/>
                 </svg>
@@ -78,7 +96,7 @@
                 </svg>
             </a>
             <a href="#" class="menu__link internLink" data-menu-entry>
-                <li class="menu__entry" data-menu-entry-text>Pricing</li>
+                <li class="menu__entry" data-menu-entry-text>Documentation</li>
                 <svg class="logo-shape circleTopLeft" width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M23.5 47C36.4787 47 47 36.4787 47 23.5C47 10.5213 36.4787 0 23.5 0C10.5213 0 0 10.5213 0 23.5C0 36.4787 10.5213 47 23.5 47Z" fill="#F07A41"/>
                 </svg>
@@ -93,7 +111,7 @@
                 </svg>
             </a>
             <a href="#" class="menu__link internLink" data-menu-entry>
-                <li class="menu__entry" data-menu-entry-text>Try For Free</li>
+                <li class="menu__entry" data-menu-entry-text>Contact</li>
                 <svg class="logo-shape circleTopLeft" width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M23.5 47C36.4787 47 47 36.4787 47 23.5C47 10.5213 36.4787 0 23.5 0C10.5213 0 0 10.5213 0 23.5C0 36.4787 10.5213 47 23.5 47Z" fill="#F07A41"/>
                 </svg>
