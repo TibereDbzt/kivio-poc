@@ -6,17 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const PATHS = {
     root: path.join(__dirname, '/'),
     src: path.join(__dirname, '/src'),
-    dist: path.join(__dirname, '/map'),
+    dist: path.join(__dirname, '/prod'),
 };
-
-const viewNames = ['globe'];
-const htmlPlugins = viewNames.map(viewName => {
-    return new HtmlWebpackPlugin({
-        template: `./src/${viewName}.html`,
-        filename: `${viewName}.html`,
-        chunks: [`${viewName}`]
-    })
-});
 
 let config = {
 
@@ -37,7 +28,12 @@ let config = {
                 test: /\.html$/,
                 loader: 'html-loader',
                 options: {
-                    attrs: [":src"]
+                    sources: {
+                        list: [{
+                            attribute: 'src',
+                            type: 'src'
+                        }]
+                    }
                 }
             },
             {
@@ -54,14 +50,7 @@ let config = {
             {
                 test: /\.sass$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', {
-                    loader: 'postcss-loader',
-                    options: {
-                        config: {
-                            ctx: {
-                                env: 'production'
-                            }
-                        }
-                    }
+                    loader: 'postcss-loader'
                 }, 'sass-loader']
             },
             // {
@@ -131,16 +120,21 @@ let config = {
     },
 
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
             chunks: ['index']
         }),
-        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/globe.html',
+            filename: 'globe.html',
+            chunks: ['globe']
+        }),
         new MiniCssExtractPlugin({
             filename: `main.css`
         })
-    ].concat(htmlPlugins)
+    ]
 };
 
 module.exports = config
