@@ -12,6 +12,20 @@ const coordinatesToPosition = (lat, long, radius) => {
     ).normalize().multiplyScalar(radius);
 };
 
+const flatCoordsToSphereCoords = (x, y, sphereRadius, sphereWidth, sphereHeight) => {
+    let latitude = ((x - sphereWidth) / sphereWidth) * -180;
+    let longitude = ((y - sphereHeight) / sphereHeight) * -90;
+    latitude = (latitude * Math.PI) / 180;
+    longitude = (longitude * Math.PI) / 180;
+    const radius = Math.cos(longitude) * sphereRadius;
+
+    return {
+        x: Math.cos(latitude) * radius,
+        y: Math.sin(longitude) * sphereRadius,
+        z: Math.sin(latitude) * radius
+    };
+};
+
 const setArc3D = (pointCenter, pointStart, pointEnd, nbOfVertices, clockWise, color) => {
     const v1 = new THREE.Vector3();
     const v2 = new THREE.Vector3();
@@ -66,4 +80,4 @@ const createPathOnSphere = (points, sphereRadius, offset, color) => {
     return new THREE.Line(geometry, material);
 };
 
-export { DEGREE_TO_RADIAN, createPathOnSphere, coordinatesToPosition, setArc3D, setCurve3D };
+export { DEGREE_TO_RADIAN, createPathOnSphere, coordinatesToPosition, flatCoordsToSphereCoords, setArc3D, setCurve3D };

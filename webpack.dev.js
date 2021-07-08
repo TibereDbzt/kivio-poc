@@ -7,7 +7,7 @@ const PATHS = {
     dist: path.join(__dirname, '/dist'),
 };
 
-const viewNames = ['globe'];
+const viewNames = ['globe', 'features'];
 const htmlPlugins = viewNames.map(viewName => {
     return new HtmlWebpackPlugin({
         template: `./src/${viewName}.html`,
@@ -22,7 +22,8 @@ let config = {
 
     entry: {
         index: './src/scripts/index.js',
-        globe: './src/scripts/globe.js'
+        globe: './src/scripts/globe.js',
+        features: './src/scripts/features.js'
     },
 
     output: {

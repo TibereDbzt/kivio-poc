@@ -1,0 +1,183 @@
+@import './../settings/variables'
+
+.operation
+    width: 100%
+    flex-direction: column
+    justify-content: space-between
+
+    .operation__text
+        text-align: center
+
+
+.manageTime__text
+    width: 40%
+    z-index: 10
+
+.manageTime__graphics
+    position: relative
+    width: 60%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    color: $blackLight
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0)
+
+    .screenSvgContainer
+        position: absolute
+        width: 100%
+        padding-left: 1em
+
+    .manageTime__screen
+        max-width: 400px
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        padding: 12px 16px
+        height: 61px
+        border-radius: 5px
+        box-shadow: 0px 0 25px rgba(0, 0, 0, 0.1)
+        // overflow: hidden
+
+        .manageTime__selectButton
+            background: $greyLight
+            padding: 4px 16px
+            font-size: 13px
+            width: 150px
+            height: 38px
+            overflow: hidden
+            box-shadow: 3px 0 12px rgba(0, 0, 0, 0.12)
+            // border: #efefef 1px solid
+            border-radius: 5px
+
+            .selectButton__item
+                display: flex
+                justify-content: space-between
+                align-items: center
+                margin: 4px 0
+                padding: 4px 0
+                white-space: nowrap
+
+        .manageTime__graph
+            width: 100%
+            padding: 4px 16px
+            margin: 16px 0
+            background: $greyLight
+            border-radius: 5px
+            height: 120px
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            box-shadow: 3px 0 8px rgba(0, 0, 0, 0.12)
+
+            .manageTime__graph__labels
+                display: flex
+                justify-content: space-between
+                font-size: 13px
+                margin: 8px 0
+
+            .manageTime__graph__timeline
+                margin: 8px 0
+
+                .manageTime__graph__timeline__content
+                    position: relative
+
+                    .manageTime__graph__timeline__block
+                        position: absolute
+                        bottom: 0
+                        box-shadow: 3px 0 5px rgba(0, 0, 0, 0.15)
+
+                    .manageTime__graph__timeline__block.rest1
+                        left: 0
+                        width: 50px
+                        height: 6px
+                        background: $green
+
+                    .manageTime__graph__timeline__block.work1
+                        left: 50px
+                        width: 30px
+                        height: 35px
+                        background: $purple
+
+                    .manageTime__graph__timeline__block.rest2
+                        left: 80px
+                        width: 20px
+                        height: 6px
+                        background: $green
+
+                    .manageTime__graph__timeline__block.drive
+                        left: 100px
+                        width: 140px
+                        height: 20px
+                        background: $orange
+
+                    .manageTime__graph__timeline__block.work2
+                        left: 240px
+                        width: 50px
+                        height: 35px
+                        background: $purple
+
+                .manageTime__graph__timeline__marker
+                    display: flex
+                    justify-content: space-between
+                    margin-top: 8px
+        
+                    .manageTime__graph__timeline__hour
+                        font-size: 8px
+                        color: $blackLight
+
+    .manageTime__entire-widget.rotated
+        width: 100%
+        height: auto
+        border-radius: 8px
+        transform: scale(1.2) translateX(-50px) rotateX(8deg) rotateY(-12deg)
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3)
+        z-index: -10
+        
+.manageTime--large
+    width: 100%
+    height: calc( 100vh - 90px )
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+
+    .manageTime__text
+        justify-content: center
+        text-align: center
+        width: 100%
+        margin-bottom: 2em
+
+    .manageTime__graphics
+        width: 100%
+
+        .widget
+            position: relative
+            width: 100%
+            height: 600px
+            border-radius: 10px
+            background-color: #1f1f1f
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4)
+            display: flex
+            flex
+            flex-direction: column
+
+            img
+                width: 100%
+
+            .widget__settingsBar
+                border-radius: 10px 10px 0 0
+
+            .widget__tableHeader
+                // margin-top: 2px
+
+            .widget__tableLine
+                display: flex
+                flex-wrap: wrap
+
+                .widget__graph
+                    width: 70%
+
+                .widget__stats
+                    width: 30%

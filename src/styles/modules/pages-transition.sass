@@ -7,7 +7,7 @@
     pointer-events: none
 
 .pageTransitionOverlay
-    z-index: 100
+    z-index: 1000
     position: fixed
     top: 0
     left: 0
@@ -25,6 +25,7 @@
         align-items: center
 
         .transparent-logo
+            transform-origin: center
             transform: scale(20) translate3d(50px, 42px, 0)
         
         > .logo-shape

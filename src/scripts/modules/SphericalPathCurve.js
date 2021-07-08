@@ -42,16 +42,16 @@ export default class SphericalPathCurve {
         l.push(v2);
 
         this.precourbe = new THREE.CatmullRomCurve3(l); // ptetre changer curveType et tension pour voir
-        // this.material = new THREE.LineBasicMaterial({ color: 0xff0000 });
-        this.material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        this.material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+        // this.material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         this.geometry = new THREE.BufferGeometry().setFromPoints(this.precourbe.getPoints(1000));
-        // this.object = new THREE.Line(this.geometry, this.material);
-        this.object = new THREE.Mesh(this.geometry, this.material);
-        this.geometry.setDrawRange(0, 1000);
+        this.object = new THREE.Line(this.geometry, this.material);
+        // this.object = new THREE.Mesh(this.geometry, this.material);
+        // this.geometry.setDrawRange(0, 1000);
         console.log(this.geometry);
         console.log(this.object);
         this.startTime = performance.now();
-        // this.drawAnimatedLine();
+        this.drawAnimatedLine();
     }
 
     drawAnimatedLine() {

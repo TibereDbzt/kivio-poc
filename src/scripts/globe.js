@@ -1,1 +1,2 @@
-import './modules/InteractiveGlobe';
+ /* eslint-disable */
+ import './modules/InteractiveGlobe';

@@ -10,12 +10,11 @@ import PagesTransition from './modules/PagesTransition';
 const loader = new LogoAnimation(document.querySelector('.loader'));
 new MenuAnimation(document.querySelector('[data-menu]'));
 new CanvasShapesTransition(document.querySelector('[data-canvas-pages-transition'));
-// const pagesTransition = new LogoOverlayTransition(document.querySelector('[data-transition-overlay]'));
+const pagesTransition = new LogoOverlayTransition(document.querySelector('[data-transition-overlay]'));
 
 window.addEventListener('load', () => {
     loader.animate();
     setTimeout(() => {
-        console.log("ok");
         loader.remove();
-    }, 2000);
+    }, 10);
 });
