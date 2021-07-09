@@ -1,4 +1,4 @@
-import './../styles/main.sass';
+import './../styles/features.sass';
 import './../styles/modules/manage-time.sass';
 
 import MenuAnimation from './modules/MenuAnimation';

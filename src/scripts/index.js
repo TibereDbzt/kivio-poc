@@ -1,6 +1,6 @@
 import './modules/DrawSVGOnScroll';
 import './modules/Popup';
-import './../styles/main.sass';
+import './../styles/index.sass';
 
 import LogoAnimation from './modules/LogoAnimation';
 import MenuAnimation from './modules/MenuAnimation';

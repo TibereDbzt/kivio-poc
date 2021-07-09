@@ -15,12 +15,13 @@ let config = {
 
     entry: {
         index: './src/scripts/index.js',
-        globe: './src/scripts/globe.js'
+        globe: './src/scripts/globe.js',
+        features: './src/scripts/features.js'
     },
 
     output: {
         path: PATHS.dist,
-        filename: 'scripts/[name].js',
+        filename: '[name].[hash:8].js',
     },
 
     module: {
@@ -131,8 +132,13 @@ let config = {
             filename: 'globe.html',
             chunks: ['globe']
         }),
+        new HtmlWebpackPlugin({
+            template: './src/features.html',
+            filename: 'features.html',
+            chunks: ['features']
+        }),
         new MiniCssExtractPlugin({
-            filename: `main.css`
+            filename: '[name].css'
         })
     ]
 };
