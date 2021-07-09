@@ -10,8 +10,17 @@
 
 <body>
 
+    <div class="loader">
+        <svg class="loader__logo" width="362" height="342" viewBox="0 0 362 342" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="circleTopLeft" d="M133.3 86C109.938 86 90.9996 105.028 90.9996 128.5C90.9996 151.972 109.938 171 133.3 171C156.661 171 175.6 151.972 175.6 128.5C175.6 105.028 156.661 86 133.3 86Z" fill="#F07A41"/>
+            <path class="triangleTopRight" d="M184.6 95.0426C184.6 90.0485 188.629 86 193.6 86H263.145C267.483 86 271 89.5332 271 93.8917C271 137.476 235.834 172.809 192.454 172.809H184.6V95.0426Z" fill="#5458FB"/>
+            <path class="circleBottomLeft" d="M133.3 171C109.938 171 90.9996 190.028 90.9996 213.5C90.9996 236.972 109.938 256 133.3 256C156.661 256 175.6 236.972 175.6 213.5C175.6 190.028 156.661 171 133.3 171Z" fill="#FFA67A"/>
+            <path class="triangleBottomRight" d="M193.6 256C188.629 256 184.6 251.951 184.6 246.957V172.809H192.886C236.027 172.809 271 207.946 271 251.291C271 253.892 268.901 256 266.313 256H193.6Z" fill="#57D180"/>
+        </svg>
+    </div>
+
     <nav>
-        <a class="logo__container" href="#">
+        <a class="logo__container" href="./index.html">
             <svg data-logo-nav viewBox="0 0 445 94" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path data-logo-text fill-rule="evenodd" clip-rule="evenodd" d="M315.109 77.2434H303.872L291.494 59.3289L286.364 64.459V77.2434H277V20.2427H286.364V52.8145L302.487 36.5286H314.295L298.09 52.7331L315.109 77.2434ZM330.578 77.2434H321.214V36.5286H330.578V77.2434ZM364.688 77.2434L379.182 36.5286H369.573L358.418 69.5076L347.262 36.5286H337.409L351.903 77.2434H364.688ZM395.388 77.2434H386.023V36.5286H395.388V77.2434ZM424.286 78.0577C436.012 78.0577 444.318 69.2633 444.318 56.886C444.318 44.5087 436.012 35.7143 424.286 35.7143C412.641 35.7143 404.336 44.5087 404.336 56.886C404.336 69.2633 412.641 78.0577 424.286 78.0577ZM424.693 70.4033H423.96C417.934 70.4033 413.7 65.4361 413.7 56.886C413.7 48.3359 417.934 43.3687 423.96 43.3687H424.693C430.719 43.3687 434.872 48.3359 434.872 56.886C434.872 65.4361 430.719 70.4033 424.693 70.4033ZM330.806 26.5065C330.806 29.274 328.563 31.5175 325.795 31.5175C323.028 31.5175 320.784 29.274 320.784 26.5065C320.784 23.7389 323.028 21.4954 325.795 21.4954C328.563 21.4954 330.806 23.7389 330.806 26.5065ZM390.313 31.5175C393.08 31.5175 395.324 29.274 395.324 26.5065C395.324 23.7389 393.08 21.4954 390.313 21.4954C387.545 21.4954 385.302 23.7389 385.302 26.5065C385.302 29.274 387.545 31.5175 390.313 31.5175Z" fill="black"/>
                 <rect width="244" height="94" fill="white"/>
@@ -37,7 +46,7 @@
                     <path d="M5 46C2.2386 46 0 43.7614 0 41V0H4.6038C28.5709 0 48 19.4292 48 43.3962C48 44.8342 46.8343 46 45.3962 46H5Z" fill="#57D180"/>
                 </svg>
             </a>
-            <a href="#" class="menu__link internLink" data-menu-entry>
+            <a href="./features.html" class="menu__link internLink" data-menu-entry>
                 <li class="menu__entry" data-menu-entry-text>Fonctionnalités</li>
                 <svg class="logo-shape circleTopLeft" width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M23.5 47C36.4787 47 47 36.4787 47 23.5C47 10.5213 36.4787 0 23.5 0C10.5213 0 0 10.5213 0 23.5C0 36.4787 10.5213 47 23.5 47Z" fill="#F07A41"/>
@@ -92,6 +101,16 @@
             <a class="btn btn--primary">Démarrer maintenant</a>
         </div>
         <div class="operation__graphics">
+            <canvas class="operation__canvas" data-operation-canvas>
+
+            </canvas>
+            <!-- <svg viewBox="0 0 1432 782" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path data-window-backbone d="M15 0.5H1417C1425.01 0.5 1431.5 6.99187 1431.5 15V781.5H0.5V15C0.5 6.99189 6.99187 0.5 15 0.5Z" fill="white" stroke="#323232"/>
+                <path data-window-line d="M0 45H1432" stroke="#323232"/>
+                <circle data-window-circle1 cx="1395.5" cy="22.5" r="5.5" strokeWidth="5" stroke="#CDCDCD"/>
+                <circle data-window-circle2 cx="1364.5" cy="22.5" r="5.5" strokeWidth="5" stroke="#CDCDCD"/>
+                <circle data-window-circle3 cx="1332.5" cy="22.5" r="5" strokeWidth="5" stroke="#CDCDCD"/>
+            </svg>
             <svg width="16" height="16" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
                     <path d="M2.36922 0.135448C2.05669 0.000848327 1.71097 -0.0368662 1.37677 0.0271844C1.04258 0.091235 0.735297 0.254103 0.494685 0.494715C0.254072 0.735327 0.0912045 1.04261 0.0271539 1.3768C-0.0368967 1.711 0.000817809 2.05672 0.135418 2.36925L20.5354 49.9692C20.6712 50.2862 20.9002 50.5544 21.1919 50.7381C21.4837 50.9219 21.8244 51.0126 22.169 50.9983C22.5135 50.9839 22.8455 50.8651 23.1209 50.6576C23.3963 50.4501 23.6021 50.1638 23.711 49.8366L30.2424 30.2425L49.8366 23.7144C50.1649 23.6062 50.4523 23.4005 50.6606 23.1247C50.869 22.8489 50.9883 22.5162 51.0027 22.1708C51.0171 21.8255 50.9259 21.484 50.7413 21.1918C50.5566 20.8996 50.2873 20.6707 49.9692 20.5354L2.36922 0.135448V0.135448Z" fill="#323232"/>
@@ -101,7 +120,7 @@
                         <rect width="51" height="51" fill="white"/>
                     </clipPath>
                 </defs>
-            </svg>
+            </svg> -->
         </div>
     </section>
 
@@ -112,15 +131,6 @@
             <a class="btn btn--primary">Démarrer maintenant</a>
         </div>
         <div class="manageTime__graphics" data-container>
-            <div class="screenSvgContainer" data-window>
-                <svg viewBox="0 0 1432 782" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path data-window-backbone d="M15 0.5H1417C1425.01 0.5 1431.5 6.99187 1431.5 15V781.5H0.5V15C0.5 6.99189 6.99187 0.5 15 0.5Z" fill="white" stroke="#323232"/>
-                    <path data-window-line d="M0 45H1432" stroke="#323232"/>
-                    <circle data-window-circle1 cx="1395.5" cy="22.5" r="5.5" strokeWidth="5" stroke="#CDCDCD"/>
-                    <circle data-window-circle2 cx="1364.5" cy="22.5" r="5.5" strokeWidth="5" stroke="#CDCDCD"/>
-                    <circle data-window-circle3 cx="1332.5" cy="22.5" r="5" strokeWidth="5" stroke="#CDCDCD"/>
-                </svg>
-            </div>
             <div class="manageTime__screen" data-screen>
                 <div class="manageTime__selectButton" data-driver-select-button>
                     <div class="selectButton__item selectButton__item--default" data-select-default-item>

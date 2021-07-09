@@ -19,7 +19,7 @@ export default class ManageTimeGraphic {
             weekSelectButton: container.querySelector('[data-week-select-button]'),
             graph: container.querySelector('[data-graph]')
         };
-        this.initSVG();
+        // this.initSVG();
         this.driverSelectAnimation = this.createSelectButtonAnimation(this.DOM.driverSelectButton);
         this.weekSelectAnimation = this.createSelectButtonAnimation(this.DOM.weekSelectButton);
         this.graphAnimation = this.createGraphAnimation(this.DOM.graph);
@@ -49,10 +49,10 @@ export default class ManageTimeGraphic {
         this.timeline.set(this.DOM.graph, { display: 'flex' });
         this.timeline.from(this.DOM.graph, { height: 0, duration: 1, ease: EASES.markedOut });
         this.timeline.add(this.graphAnimation, '<-0.7');
-        this.timeline.to(this.DOM.screen, { scale: 0.9, translateX: -140, translateY: -60, skewX: 0, duration: 2, rotate: 0, ease: EASES.markedInOut });
-        Object.values(this.DOM.window).forEach(shape => {
-            this.timeline.to(shape, { strokeDashoffset: 0, duration: 1, ease: EASES.markedInOut }, '<+0.2');
-        });
+        // this.timeline.to(this.DOM.screen, { scale: 0.9, translateX: -140, translateY: -60, skewX: 0, duration: 2, rotate: 0, ease: EASES.markedInOut });
+        // Object.values(this.DOM.window).forEach(shape => {
+        //     this.timeline.to(shape, { strokeDashoffset: 0, duration: 1, ease: EASES.markedInOut }, '<+0.2');
+        // });
     }
 
     createSelectButtonAnimation(button) {

@@ -125,7 +125,6 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0x0E0F2B);
 scene.add(globe);
-// scene.add(elementsGroup);
 paths.forEach(path => scene.add(path.object));
 //  scene.add(purpleLight);
 //  scene.add(orangeLight);
