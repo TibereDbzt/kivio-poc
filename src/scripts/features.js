@@ -14,7 +14,7 @@ const manageTimeSection2 = document.querySelector('section.manageTime.two');
 const manageTimeSection3 = document.querySelector('section.manageTime.three');
 
 new MenuAnimation(document.querySelector('[data-menu]'));
-new OperationAnimation(manageTimeHero.querySelector('[data-operation-canvas]'));
+// new OperationAnimation(manageTimeHero.querySelector('[data-operation]'));
 new ManageTimeGraphic(manageTimeSection1.querySelector('[data-container]'));
 new ManageTimeScreens(manageTimeSection2.querySelector('[data-container]'));
 // new ManageTimeScreens(manageTimeSection3.querySelector('[data-container]'));

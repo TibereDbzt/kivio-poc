@@ -1,6 +1,8 @@
 import gsap from 'gsap';
 import { EASES } from './../utils/animations';
 import { getCircleLength, getPathLength } from './../utils/svg-maths';
+import { mousePos } from './../utils/getters';
+import { lerp, map } from './../utils/maths';
 
 export default class ManageTimeGraphic {
 
@@ -19,6 +21,7 @@ export default class ManageTimeGraphic {
             weekSelectButton: container.querySelector('[data-week-select-button]'),
             graph: container.querySelector('[data-graph]')
         };
+        this.initEvents();
         // this.initSVG();
         this.driverSelectAnimation = this.createSelectButtonAnimation(this.DOM.driverSelectButton);
         this.weekSelectAnimation = this.createSelectButtonAnimation(this.DOM.weekSelectButton);
@@ -26,6 +29,33 @@ export default class ManageTimeGraphic {
         this.timeline = gsap.timeline();
         this.animateScreen();
     }
+
+    initEvents() {
+        this.DOM.container.addEventListener('mouseenter', () => {
+            gsap.to(this.DOM.container, { scale: 1.1, duration: 1, ease: EASES.markedOut });
+        });
+        this.DOM.container.addEventListener('mouseleave', () => {
+            gsap.to(this.DOM.container, { scale: 1, duration: 1, ease: EASES.markedOut });
+        });
+        this.lastRotateX = 0;
+        this.lastRotateY = 0;
+        // const targetBounds = this.DOM.container.getBoundingClientRect();
+        // const targetX = targetBounds.left + targetBounds.width / 2;
+        // const targetY = targetBounds.top + targetBounds.height / 2;
+        // this.DOM.container.addEventListener('mousemove', e => {
+        //     const rotateX = map(mousePos.y - targetY, -targetBounds.height / 2, targetBounds.height / 2, -25, 25);
+        //     const rotateY = map(mousePos.x - targetX, -targetBounds.width / 2, targetBounds.width / 2, -25, 25);
+        //     this.lastRotateX = lerp(this.lastRotateX, rotateX, 0.2);
+        //     this.lastRotateY = lerp(this.lastRotateY, rotateY, 0.2);
+        //     this.setRotate();
+        //     // gsap.set(this.DOM.screen, { rotateX: lastRotateX, rotateY: -lastRotateY });
+        // });
+    }
+
+    // setRotate() {
+    //     gsap.set(this.DOM.screen, { rotateX: -this.lastRotateX, rotateY: this.lastRotateY });
+    //     requestAnimationFrame(() => this.setRotate());
+    // }
 
     initSVG() {
         const lengths = [getPathLength(this.DOM.window.backbonePath), getPathLength(this.DOM.window.linePath), getCircleLength(this.DOM.window.circle1Path), getCircleLength(this.DOM.window.circle2Path), getCircleLength(this.DOM.window.circle3Path)];
@@ -36,7 +66,7 @@ export default class ManageTimeGraphic {
     }
 
     animateScreen() {
-        gsap.set(this.DOM.screen, { scale: 1.2, skewX: 3, padding: 0, width: 180, rotate: 3, force3D: false });
+        gsap.set(this.DOM.screen, { scale: 1.2, padding: 0, width: 180, force3D: false });
         gsap.set(this.DOM.weekSelectButton, { display: 'none' });
         gsap.set(this.DOM.graph, { display: 'none' });
         gsap.set(this.DOM.driverSelectButton, { marginRight: 0 });
@@ -70,7 +100,7 @@ export default class ManageTimeGraphic {
         tl.from(driverSelectItems[1], { opacity: 0, translateY: -10, duration: 0.8, ease: EASES.markedOut, force3D: false }, '<+0.2');
         tl.from(driverSelectItems[2], { opacity: 0, translateY: -10, duration: 0.8, ease: EASES.markedOut, force3D: false }, '<+0.2');
         tl.to(driverSelectDefaultItem, { opacity: 0, duration: 0.8, ease: EASES.markedOut, force3D: false }, '>+0.3');
-        tl.to(driverSelectItems[2], { translateY: -77, duration: 0.8, ease: EASES.markedInOut, force3D: false }, '<-0.2');
+        tl.to(driverSelectItems[2], { translateY: -74, duration: 0.8, ease: EASES.markedInOut, force3D: false }, '<-0.2');
         tl.to(btn, { height: 38, duration: 1.4, ease: EASES.markedInOut, force3D: false }, '<');
         return tl;
     }
