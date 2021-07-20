@@ -6,3 +6,7 @@
 
 .operation__animation{width:100%;display:flex}.operation__animation>div{width:33.33%;display:flex;justify-content:center;align-items:center}.operation__animation .operation__animation__engine>svg{width:130px;height:auto}
 
+.concept{width:100%;display:flex;justify-content:center;align-items:center}.concept .concept__benefitsContainer{position:relative;transform-origin:center;transform-box:fill-box;-webkit-animation:fullRotate 3s linear infinite;animation:fullRotate 3s linear infinite}.concept .concept__benefitsContainer .concept__benefit{position:absolute;transform-origin:center;transform-box:fill-box;-webkit-animation:fullRotate 4s linear infinite;animation:fullRotate 4s linear infinite}@-webkit-keyframes fullRotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes fullRotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}
+
+.overview{display:flex;flex-direction:column}.overview .overview__text{text-align:center}.overview .overview__text .catchphrase{display:flex;margin-top:80px;justify-content:center}.overview .overview__text .catchphrase .catchphrase__item{margin:8px;font-size:1.8em}.overview .overview__graph{width:100%;height:auto}.roller{display:flex;height:38px;overflow:hidden}.roller .roller__container{display:flex;flex-direction:column}.roller .roller__container .roller__item{padding:5px}.roller--reversed{align-items:flex-end}.roller--left .roller__container{align-items:flex-end}.roller--right .roller__container{align-items:flex-start}
+

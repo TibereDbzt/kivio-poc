@@ -6,6 +6,9 @@ import MenuAnimation from './modules/MenuAnimation';
 import ManageTimeGraphic from './modules/ManageTimeGraphic';
 import ManageTimeScreens from './modules/ManageTimeScreens';
 import OperationAnimation from './modules/OperationAnimation';
+import ConceptAnimation from './modules/ConceptAnimation';
+import OverviewGraph from './modules/OverviewGraph';
+import RollerSentence from './modules/RollerSentence';
 
 const loader = new LogoAnimation(document.querySelector('.loader'));
 const manageTimeHero = document.querySelector('section.operation');
@@ -17,11 +20,14 @@ new MenuAnimation(document.querySelector('[data-menu]'));
 // new OperationAnimation(manageTimeHero.querySelector('[data-operation]'));
 new ManageTimeGraphic(manageTimeSection1.querySelector('[data-container]'));
 new ManageTimeScreens(manageTimeSection2.querySelector('[data-container]'));
+new ConceptAnimation(document.querySelector('[data-concept]'));
+new OverviewGraph(document.querySelector('[data-overview-svg]'));
+new RollerSentence(document.querySelector('[data-roller-sentence]'));
 // new ManageTimeScreens(manageTimeSection3.querySelector('[data-container]'));
 
 window.addEventListener('load', () => {
     loader.animate();
     setTimeout(() => {
         loader.remove();
-    }, 10);
+    }, 0);
 });

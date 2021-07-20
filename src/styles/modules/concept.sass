@@ -1,0 +1,23 @@
+.concept
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+    .concept__benefitsContainer
+        position: relative
+        transform-origin: center
+        transform-box: fill-box
+        animation: fullRotate 3s linear infinite
+
+        .concept__benefit
+            position: absolute
+            transform-origin: center
+            transform-box: fill-box
+            animation: fullRotate 4s linear infinite
+
+@keyframes fullRotate
+    0%
+        transform: rotateZ(0deg)
+    100%
+        transform: rotateZ(360deg)
