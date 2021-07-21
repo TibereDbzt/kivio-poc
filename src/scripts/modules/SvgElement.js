@@ -15,14 +15,14 @@ export class SvgElement {
         const shapes = this.DOM.shapes;
         shapes.forEach((shape, i) => {
             timeline.add(gsap.to(shape.el, { strokeDashoffset: 0, duration: duration, ease: ease, delay: i * offset }), tracking);
-            if (shape.el.dataset.staticFill !== '' && shape.el.hasAttribute('fill')) {
+            if (shape.el.hasAttribute('fill') && !shape.el.hasAttribute('data-static-fill')) {
                 timeline.add(gsap.to(shape.el, { fill: shape.fill, ease: ease, delay: 1 }), tracking);
             }
         });
         return timeline;
     }
 
-    undrawShapes(duration, ease, offset, tracking) {
+    undrawShapes(duration, ease, offset, tracking = '') {
         const shapes = this.DOM.shapes;
         const timeline = gsap.timeline();
         shapes.forEach((shape, i) => timeline.add(gsap.to(shape.el, { strokeDashoffset: -shape.length, duration: duration, ease: ease, delay: i * offset }), tracking));
@@ -33,7 +33,7 @@ export class SvgElement {
         const shapes = this.DOM.shapes;
         const timeline = gsap.timeline();
         shapes.forEach(shape => {
-            if (shape.el.dataset.staticFill !== '' && shape.el.hasAttribute('fill')) {
+            if (shape.el.hasAttribute('fill') && !shape.el.hasAttribute('data-static-fill')) {
                 shape.fill = shape.el.getAttribute('fill');
                 timeline.set(shape.el, {
                     fill: 'none'
@@ -74,7 +74,7 @@ export class SvgElement {
         const shapes = [];
         const trackShapes = element => {
             if (element.children.length > 0)[...element.children].forEach(subChildElement => trackShapes(subChildElement));
-            if (!element.hasAttribute('stroke')) return;
+            if (!element.hasAttribute('stroke') || element.hasAttribute('data-static-stroke')) return;
             const shapeLength = this.getShapeLength(element);
             if (shapeLength) shapes.push({
                 el: element,

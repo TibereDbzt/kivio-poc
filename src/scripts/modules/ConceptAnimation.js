@@ -15,7 +15,7 @@ export default class ConceptAnimation {
             factory: el.querySelectorAll('[data-concept-factory]'),
             benefits: el.querySelectorAll('[data-concept-benefit]'),
         };
-        this.timeline = gsap.timeline();
+        this.timeline = gsap.timeline().delay(1);
         this.timeline.add(this.animateObjects());
         this.timeline.add(this.animateRouteAndLogo(), '>-=0.4');
         this.timeline.add(this.animateFactory(), '>-=0.4');

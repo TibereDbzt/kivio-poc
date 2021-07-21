@@ -7,40 +7,38 @@
 
         .catchphrase
             display: flex
-            margin-top: 80px
+            margin-top: 120px
             justify-content: center
 
             .catchphrase__item
-                margin: 8px
-                font-size: 1.8em
+                font-size: 1.1em
     
     .overview__graph
         width: 100%
         height: auto
 
 .roller
-    display: flex
-    height: 38px
-    overflow: hidden
 
-    .roller__container
-        display: flex
-        flex-direction: column
+    .roller__mask
+        height: 27px
+        overflow: hidden
 
-        .roller__item
-            padding: 5px
+        .roller__container
+            display: flex
+            flex-direction: column
 
-.roller--reversed
-    align-items: flex-end
+            .roller__item
+                padding: 5px
+
 
 .roller--left
 
-    .roller__container
-        align-items: flex-end
+    .roller__item
+        text-align: right
 
 .roller--right
 
-    .roller__container
-        align-items: flex-start
+    .roller__item
+        text-align: left
 
 

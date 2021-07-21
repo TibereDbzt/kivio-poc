@@ -26,7 +26,7 @@ export default class ManageTimeGraphic {
         this.driverSelectAnimation = this.createSelectButtonAnimation(this.DOM.driverSelectButton);
         this.weekSelectAnimation = this.createSelectButtonAnimation(this.DOM.weekSelectButton);
         this.graphAnimation = this.createGraphAnimation(this.DOM.graph);
-        this.timeline = gsap.timeline();
+        this.timeline = gsap.timeline().delay(3).timeScale(1.3);
         this.animateScreen();
     }
 

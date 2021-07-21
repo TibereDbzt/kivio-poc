@@ -9,6 +9,7 @@ import OperationAnimation from './modules/OperationAnimation';
 import ConceptAnimation from './modules/ConceptAnimation';
 import OverviewGraph from './modules/OverviewGraph';
 import RollerSentence from './modules/RollerSentence';
+import CatchphrasesAnimation from './modules/CatchphrasesAnimation';
 
 const loader = new LogoAnimation(document.querySelector('.loader'));
 const manageTimeHero = document.querySelector('section.operation');
@@ -23,11 +24,12 @@ new ManageTimeScreens(manageTimeSection2.querySelector('[data-container]'));
 new ConceptAnimation(document.querySelector('[data-concept]'));
 new OverviewGraph(document.querySelector('[data-overview-svg]'));
 new RollerSentence(document.querySelector('[data-roller-sentence]'));
+new CatchphrasesAnimation(document.querySelector('[data-catchphrases]'));
 // new ManageTimeScreens(manageTimeSection3.querySelector('[data-container]'));
 
 window.addEventListener('load', () => {
     loader.animate();
-    setTimeout(() => {
-        loader.remove();
-    }, 0);
+    // setTimeout(() => {
+    //     loader.remove();
+    // }, 0);
 });

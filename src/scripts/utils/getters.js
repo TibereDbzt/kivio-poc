@@ -12,7 +12,7 @@ const getDistanceTo = (el, elSide, target = window, targetSide = 'bottom') => {
 
     if (elSide === 'top' && targetSide === 'top') return Math.ceil(targetBounds.top - elBounds.top);
     else if (elSide === 'top' && targetSide === 'bottom') return Math.ceil(targetBounds.bottom - elBounds.top);
-    else if (elSide === 'bottom' && targetSide === 'top') return Math.ceil(elBounds.top - targetBounds.bottom);
+    else if (elSide === 'bottom' && targetSide === 'top') return Math.ceil(targetBounds.top - elBounds.bottom);
     else if (elSide === 'bottom' && targetSide === 'bottom') return Math.ceil(targetBounds.bottom - elBounds.bottom);
 
     else if (elSide === 'right' && targetSide === 'right') return Math.ceil((targetBounds.right - elBounds.right));

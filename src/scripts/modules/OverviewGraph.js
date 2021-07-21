@@ -17,7 +17,7 @@ export default class OverviewGraph {
         };
         this.setObjects();
         this.setDottedRoutes();
-        this.timeline = gsap.timeline().delay(2);
+        this.timeline = gsap.timeline().delay(3);
         this.animate();
     }
 
@@ -28,18 +28,21 @@ export default class OverviewGraph {
                 repeat: 2,
                 duration: 0.1
             });
-            this.timeline.add(this.DOM.filledRoutes[this.DOM.filledRoutes.length - 1 - i].drawShapes(1.3, EASES.markedIn, 0));
+            this.timeline.add(this.DOM.filledRoutes[this.DOM.filledRoutes.length - 1 - i].drawShapes(1.3, EASES.markedIn, 0.4), '<-=0.6');
             this.timeline.add(this.DOM.finalRoute.drawShapes(0.5, EASES.markedOut, 0, '>'));
-            this.timeline.add(this.DOM.finalRoute.undrawShapes(1.6, EASES.markedOut, 0), '>');
-            this.timeline.add('drawingWidget', '<');
-            this.timeline.add(this.DOM.finalRoute.setShapesAttributes(), '>');
+            this.timeline.add('drawingWidget', '>-=0.9');
+            if (this.DOM.objects.length - 1 !== i) {
+                this.timeline.add(this.DOM.finalRoute.undrawShapes(1.6, EASES.markedOut, 0), '>');
+                this.timeline.add(this.DOM.finalRoute.setShapesAttributes(), '>');
+            }
             this.timeline.fromTo(this.DOM.widgets[i].DOM.svg, {
-                translateY: -50,
+                translateX: -50,
                 opacity: 0
             }, {
-                translateY: 0,
+                translateX: 0,
                 opacity: 1,
-                duration: 0.2
+                duration: 0.5,
+                ease: EASES.markedOut
             }, 'drawingWidget');
             this.timeline.add(this.DOM.widgets[i].drawShapes(1, EASES.markedOut, 0), 'drawingWidget');
         })

@@ -12,7 +12,7 @@ export default class LogoAnimation {
             circleBottomLeft: this.svg.querySelector('path.circleBottomLeft'),
             triangleBottomRight: this.svg.querySelector('path.triangleBottomRight')
         };
-        this.timeline = gsap.timeline({ repeat: -1 });
+        this.timeline = gsap.timeline().timeScale(2.1);
         this.isPaused = true;
         this.initEvents();
     }
@@ -36,12 +36,12 @@ export default class LogoAnimation {
         this.timeline.to(this.shapes.circleTopLeft, { yPercent: 100, translateX: 6, translateY: 11, duration: 0.4, ease: 'power4.out' });
         this.timeline.set(this.shapes.triangleTopRight, { transformOrigin: 'top right' });
         this.timeline.to(this.shapes.triangleTopRight, { rotation: -90, duration: 0.4, ease: 'power4.out' });
-        this.timeline.to(this.svg, { rotate: 90, duration: 1, xPercent: 2, ease: 'elastic.out' });
-        this.timeline.play();
+        this.timeline.to(this.svg, { rotate: 90, duration: 2.4, xPercent: 2, ease: 'elastic.out' });
+        this.timeline.play().then(this.remove.bind(this));
     }
 
     remove() {
-        gsap.to(this.container, { opacity: 0, display: 'none', duration: 1.9, ease: 'power2.inOut' });
+        gsap.to(this.container, { autoAlpha: 0, duration: 0.5, ease: 'power2.inOut' });
     }
 
 }
